@@ -1,17 +1,16 @@
-const startBtn = document.querySelector('.data-start');
-const stopBtn = document.querySelector('.data-stop');
+const startBtn = document.querySelector('button[data-start]');
+const stopBtn = document.querySelector('button[data-stop]');
 const body = document.querySelector('body');
 
 function getRandomHexColor() {
   return `#${Math.floor(Math.random() * 16777215).toString(16)}`;
 }
-
 let timerId = null;
 
 startBtn.addEventListener('click', () => {
   startBtn.disabled = true;
   stopBtn.disabled = false;
-  timerId.setInterval(() => {
+  timerId = setInterval(() => {
     document.body.style.background = getRandomHexColor();
   }, 1000);
 });
