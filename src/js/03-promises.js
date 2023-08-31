@@ -18,3 +18,22 @@ const createPromise = (position, delay) => {
   });
 };
 
+const displayPromise = () => {
+  let delay = +elDelay.value;
+
+  for (let i = 1; i <= elAmount.value; i++) {
+    createPromise(i, delay)
+      .then(resolve => {
+        Notiflix.Notify.success(resolve);
+      })
+      .catch(reject => {
+        Notiflix.Notify.failure(reject);
+      });
+    delay += +elStep.value;
+  }
+};
+
+elBtn.addEventListener('click', e => {
+  e.preventDefault();
+  displayPromise();
+});
